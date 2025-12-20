@@ -1,0 +1,27 @@
+{
+  "name": "book",
+  "version": "1.0.0",
+  "description": "Book Management App",
+  "homepage": "https://github.com/Deepesh70/Book-Management#readme",
+  "bugs": {
+    "url": "https://github.com/Deepesh70/Book-Management/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Deepesh70/Book-Management.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
