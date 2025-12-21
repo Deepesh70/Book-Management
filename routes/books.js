@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
 });
 
 
-
+ 
 router.get("/issued/by-users", (req, res) => {
     const userswithIssuedBook = users.filter((each) => {
         if( each.issueBookId ) return each;
@@ -59,6 +59,56 @@ router.get("/:id", (req, res) => {
         data: book,
     });
 }); 
+
+router.post("/", (req, res) => {
+    const data = req.body;
+
+    if(!data){
+        return res.status(404).json({
+            success: false,
+            message: "No data Provided!.",
+        });
+    }
+    const book = books.find((each)=> each.id === Number(data.id))
+
+    if(book){
+        return res.status(404).json({
+            success: false,
+            message: "Book already exist with this id."
+        });
+    }
+    const allBooks = [ ...books, data]; // if wants to send multiple books do ...data
+
+    res.status(200).json({
+        success: true,
+        message: `Added new Book with Id ${data.id}`,
+        data: allBooks,
+    });
+});
+
+router.put("/:id", (req, res) => {
+    const { id } = req.params;
+    const { data } = req.body;
+
+    const book = books.find((each) => each.id === Number(id));
+    if(!book){
+        return res.status(404).json({
+            success: false,
+            message: `No book with id ${id}`
+        });
+    }
+
+    const updatedbook = books.map((each) => {
+        if(each.id === Number(id)){
+            return { ...each, ...data};
+        }
+        return each;
+    });
+    return res.status(200).json({
+        success: true,
+        data: updatedbook,
+    });
+});
 
 
 module.exports = router;
