@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
 
 
 
-router.get("/issued", (req, res) => {
+router.get("/issued/by-users", (req, res) => {
     const userswithIssuedBook = users.filter((each) => {
         if( each.issueBookId ) return each;
 
