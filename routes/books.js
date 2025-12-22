@@ -110,5 +110,22 @@ router.put("/:id", (req, res) => {
     });
 });
 
+router.get("/fine/books", (req, res) => {
+    
+    const finedbooks =  users.filter((each) => each.fine> 0);
+    if(finedbooks.length === 0){
+        return res.status(404).json({
+            success:false,
+            message: "No fined Books."
+        })
+    }
+  
+
+    return res.status(200).json({
+        success: true,
+        finedbooks,
+    });
+});
+
 
 module.exports = router;

@@ -6,10 +6,11 @@
         "surname": "Doe",
         "email": "john.doe@example.com",
         "issueBookId": 1,
-        "issueDate": "2024-01-15",
-        "returnDate": "2024-02-15",
-        "subscriptionType": "Premium",
-        "subscriptionDate": "2023-12-01"
+        "issueDate": "2025-01-01",
+        "returnDate": "2025-04-01",
+        "subscriptionType": "Basic",
+        "subscriptionDate": "2025-01-01",
+        "fine": 200
     },
     {
         "id": 2,
