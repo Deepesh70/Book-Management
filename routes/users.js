@@ -111,7 +111,6 @@ router.delete('/:id', (req, res) =>{
 
 router.get("/subscription-details/:id", (req, res) => {
     const { id } = req.params;
-    // const { data } = users.body;
 
     const user = users.find((each) => each.id === Number(id));
     if(!user){
@@ -149,7 +148,7 @@ router.get("/subscription-details/:id", (req, res) => {
 
     const data = {
         ...user,
-        subscriptionExpired : subscriptionExpiration < currentDate, //boolean
+        subscriptionExpired : subscriptionExpiration < currentDate, //boolean | added fields in users array
         daysLeftforExpiration : 
             subscriptionExpiration <= currentDate ? 0 : subscriptionExpiration - currentDate,
         fine: 
