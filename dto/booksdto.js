@@ -1,4 +1,4 @@
-// DTO
+// Data transfer Object (DTO) -> will only sends the necessary Data 
 class IssuedBook {
     _id;
     name;

@@ -1,5 +1,4 @@
 const express = require("express");
-// const { users } = require('./data/user.json');
 
 const dotenv = require('dotenv');
 const usersRouter = require("./routes/users");
@@ -29,9 +28,9 @@ app.use("/books", booksRouter);
 app.use( (req, res) =>{
     res.status(404).json({
         message:"Route Doesn't Exist",
-    })
-})
+    });
+});
 
 app.listen(PORT, () => {
-    console.log(`http://localhost:${PORT}`);
-})
+    console.log(`Server is Running on http://localhost:${PORT}`);
+});
