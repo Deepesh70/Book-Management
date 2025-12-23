@@ -9,8 +9,7 @@
         "issueDate": "2025-01-01",
         "returnDate": "2025-04-01",
         "subscriptionType": "Basic",
-        "subscriptionDate": "2025-01-01",
-        "fine": 200
+        "subscriptionDate": "2025-01-01"
     },
     {
         "id": 2,
