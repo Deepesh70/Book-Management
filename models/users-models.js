@@ -16,8 +16,12 @@ const userSchema = new Schema({
         required: true
     },
     issuedBook: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Books",
+        required: false,
+    },
+    issueDate: {
+        type: String, 
         required: false,
     },
     returnDate: {
