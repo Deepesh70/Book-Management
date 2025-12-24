@@ -32,6 +32,24 @@ const getSingleBookById = async(req, res) => {
     });
 };
 
+const getSingleBookByName = async(req, res) => {
+    const { name } = req.params;
+
+    const book = await BookModel.findOne({
+        name: name
+    });
+    if(!book){
+        return res.status(404).json({
+            success: false,
+            message: "Book not Found!"
+        });
+    }
+    res.status(200).json({
+        success: true,
+        data: book,
+    });
+};
+
 const getAllissuedBooks = async( req ,res) => {
     
     const users = await UserModel.find({
@@ -53,4 +71,44 @@ const getAllissuedBooks = async( req ,res) => {
     });
 };
 
-module.exports = {getAllBooks, getSingleBookById, getAllissuedBooks };
+const addNewBook = async (req, res) => {
+    const data = req.body;
+
+    if(!data){
+        return res.status(404).json({
+            success: false,
+            message: "No data Provided!.",
+        });
+    }
+
+     await BookModel.create(data);
+
+     const allBooks = await BookModel.find();
+
+    res.status(200).json({
+        success: true,
+        data: allBooks,
+    });
+};
+
+const  updateBookById = async(req, res) => {
+    const { id } = req.params;
+    const { data } = req.body;
+
+    const updatedbook = await BookModel.findOneAndUpdate(
+        {
+            _id : id
+        },
+        data,
+        {
+            new:true,
+        }
+    ); 
+
+    return res.status(200).json({
+        success: true,
+        data: updatedbook,
+    });
+};
+
+module.exports = {getAllBooks, getSingleBookById, getAllissuedBooks, addNewBook , updateBookById, getSingleBookByName};
